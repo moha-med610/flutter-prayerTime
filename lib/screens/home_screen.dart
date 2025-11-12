@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:prayer_time_app/widgets/prayer_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -274,396 +275,50 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_iocn.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "الفجر",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Fajr"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "الفجر",
+                            prayerTime: "${timings?["Fajr"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "الشروق",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Sunrise"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "الشروق",
+                            prayerTime: "${timings?["Sunrise"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "الظهر",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Dhuhr"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "الضهر",
+                            prayerTime: "${timings?["Dhuhr"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "العصر",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Asr"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "العصر",
+                            prayerTime: "${timings?["Asr"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "المغرب",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Maghrib"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "المغرب",
+                            prayerTime: "${timings?["Maghrib"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "العشاء",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Isha"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "العشاء",
+                            prayerTime: "${timings?["Isha"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "منتصف الليل",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Midnight"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "منتصف الليل",
+                            prayerTime: "${timings?["Midnight"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "الثلث الاول",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Firstthird"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "الثلث الاول",
+                            prayerTime: "${timings?["Firstthird"]}",
                           ),
-                          Card(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            elevation: 10,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        "assets/icons/App_icon.png",
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "الثلث الاخير",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    Text(
-                                      "${timings?["Lastthird"]}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PrayerCard(
+                            image: "assets/icons/App_icon.png",
+                            prayerName: "الثلث الاخير",
+                            prayerTime: "${timings?["Lastthird"]}",
                           ),
                         ],
                       ),
